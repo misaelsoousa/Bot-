@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot</title>
+    <link rel="stylesheet" href="static/css/chat.css">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <!-- CHAT BAR BLOCK -->
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">Suporte com o Bot
+            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+        </button>
+
+        <div class="content">
+            <div class="full-chat-block">
+                <!-- Message Container -->
+                <div class="outer-container">
+                    <div class="chat-container">
+                        <!-- Messages -->
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                        </div>
+
+                        <!-- User input box -->
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <div id="textInput" class="input-box">
+                                    <div id="step-1" style="display: block">
+                                        <button onclick="getBotResponse('pconta', this, 'Qual o seu problema com a conta?')" class="btn btn-outline-primary" style="display: inline ;">Estou com problema na minha conta</button>
+                                        <button onclick="getBotResponse('pfinanceiro', this, 'Qual o seu problema do financeiro?')" class="btn btn-outline-primary" style="display: inline ;">Estou com problema no financeiro</button>
+                                        <button onclick="getBotResponse('outro', this, 'O seu problema não está entre as perguntas?')" class="btn btn-outline-primary" style="display: inline ;">Outro</button>
+                                    </div>
+
+                                    <div id="step-2">
+                                        <div id="pconta">
+                                            <button onclick="getBotResponse('pconta1', this, 'Verifique seu email e senha, e se o problema persistir crie um ticket!')" class="btn btn-outline-primary" style="display: inline ;">Não consigo fazer o login</button>
+                                            <button onclick="getBotResponse('pconta2', this, 'Será enviado um email de recuperação ao e-mail cadastrado')" class="btn btn-outline-primary" style="display: inline ;">Esqueci minha senha</button>
+                                            <button onclick="getBotResponse('pconta3', this, 'Verifique as informações e os parâmetros pedidos e se o problema persistir abra um ticket!')" class="btn btn-outline-primary" style="display: inline ;">Problemas no cadastro</button>
+                                        </div>
+                                        
+
+                                        <div id="pfinanceiro">
+                                            <button onclick="getBotResponse('pfinanceiro1', this, 'Abra um ticket na área do financeiro por favor!')" class="btn btn-outline-primary" style="display: inline ;">Fiz o pagamento e não atualizou</button>
+                                            <button onclick="getBotResponse('pfinanceiro2', this, 'Abra um ticket na área do financeiro por favor!')" class="btn btn-outline-primary" style="display: inline ;">Preciso cancelar a assinatura</button>
+                                            <button onclick="getBotResponse('pfinanceiro3', this, 'Aceitamos pix, Mercado Pago, Paypal, cartão de crédito e boleto!')" class="btn btn-outline-primary" style="display: inline ;">Métodos de pagamento</button>
+                                        </div>
+                                        <div id="outro">
+                                            <button onclick="getBotResponse('outro1', this, 'Mande um ticket para o nosso email com sua dúvida')" class="btn btn-outline-primary" style="display: inline ;">Não</button>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div id="step-3">
+                                        
+                                        
+                                        <div id="pconta1">
+                                            <button onclick="getBotResponse('finish', this, 'Resolveu seu problema?')" class="btn btn-outline-primary" style="display: inline ;">Ok obrigado!</button>
+                                        </div>      
+                                        <div id="pconta2">
+                                            <button onclick="getBotResponse('finish', this, 'Resolveu seu problema?')" class="btn btn-outline-primary" style="display: inline ;">Ok obrigado!</button>
+                                        </div>                            
+                                        <div id="pconta3">
+                                            <button onclick="getBotResponse('finish', this, 'Resolveu seu problema?')" class="btn btn-outline-primary" style="display: inline ;">Ok obrigado!</button>
+                                        </div>   
+                                        <div id="pfinanceiro1">
+                                            <button onclick="getBotResponse('finish', this, 'Resolveu seu problema?')" class="btn btn-outline-primary" style="display: inline ;">Ok obrigado!</button>
+                                        </div>      
+                                        <div id="pfinanceiro2">
+                                            <button onclick="getBotResponse('finish', this, 'Resolveu seu problema?')" class="btn btn-outline-primary" style="display: inline ;">Ok obrigado!</button>
+                                        </div>                            
+                                        <div id="pfinanceiro3">
+                                            <button onclick="getBotResponse('finish', this, 'Resolveu seu problema?')" class="btn btn-outline-primary" style="display: inline ;">Ok obrigado!</button>
+                                        </div>   
+                                        <div id="outro1">
+                                            <button onclick="getBotResponse('finish', this, 'Resolveu seu problema?')" class="btn btn-outline-primary" style="display: inline ;">Ok obrigado!</button>
+                                        </div>   
+
+                                        
+                                                                                                                       
+                                       
+                                    </div>
+                                    <div id="step-4">
+                                       
+                                        <div id="finish">
+                                            <button onclick="resetBot()" class="btn btn-outline-primary" style="display: inline ;">Não, voltar do inicio</button>
+                                        </div>
+                                      
+                                    </div>
+                                    
+                                    
+
+                                </div>
+                            </div>
+
+                            <!-- <div class="chat-bar-icons">
+                                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                    onclick="heartButton()"></i>
+                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                    onclick="sendButton()"></i>
+                            </div> -->
+                        </div>
+
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="static/scripts/responses.js"></script>
+    <script src="static/scripts/chat.js"></script>
+</body>
+
+
+</html>
